@@ -24,13 +24,15 @@ pc_sub <- subset(pc, pc$Date >= '2007-02-01' & pc$Date <= '2007-02-02')
 #plotting 4
 #split the screen 
 
+png(filename = "PlotR4.png", width = 480, height = 480)
 
+par(mfrow=c(2,2))
 
-plot(y = pc_sub$Global_active_power/1000
-     , x = pc_sub$DateTime,main = ""
-     , xlab = ""
-     , ylab ="Gloval Active Power(kilowats)"
-     , type = 'l')
+hist(pc_sub$Global_active_power/1000
+     , col = 'red'
+     , freq = TRUE
+     , main = "Global Active Power"
+     , xlab = "Global Active Power(kilowatts)")
 
 plot(x=pc_sub$DateTime
      , y=pc_sub$Voltage
@@ -65,4 +67,4 @@ plot(y = pc_sub$Global_reactive_power
      , ylab ="Gloval Reactive Power(kilowats)"
      , type = 'l')
 
-
+dev.off()
